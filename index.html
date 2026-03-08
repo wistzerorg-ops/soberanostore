@@ -39,77 +39,72 @@
         h1 { font-size: 4rem; font-weight: 900; margin-bottom: 10px; color: #fff; text-transform: uppercase; }
         .subtitle { letter-spacing: 5px; color: #d4af37; font-size: 0.8rem; margin-bottom: 50px; font-weight: 700; }
 
-        /* --- TELA DE ACESSO (NOVO) --- */
+        /* --- TELA DE ACESSO --- */
         .login-box {
             background: var(--card-bg); border: 1px solid #1a1a1a; padding: 40px; 
             border-radius: 15px; max-width: 400px; margin: 40px auto; text-align: left;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .login-box label { display: block; margin-bottom: 10px; font-weight: 900; color: #d4af37; text-transform: uppercase; font-size: 0.9rem;}
-        .login-box input {
+        .login-box input, .login-box select {
             width: 100%; padding: 15px; background: #050505; border: 1px solid #333;
             color: #fff; border-radius: 8px; margin-bottom: 5px; outline: none; transition: 0.3s; font-size: 1rem;
         }
-        .login-box input:focus { border-color: #d4af37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+        .login-box input:focus, .login-box select:focus { border-color: #d4af37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
         .info-text { font-size: 0.75rem; color: #888; margin-bottom: 25px; font-weight: 600; }
         
-        /* Botão Desativado */
-        .btn-confirm:disabled { 
-            background: #222; color: #555; cursor: not-allowed; box-shadow: none; transform: none; border: 1px solid #333;
-        }
+        .btn-confirm:disabled { background: #222; color: #555; cursor: not-allowed; border: 1px solid #333; }
 
-        /* GRID CATEGORIAS */
+        /* GRID CATEGORIAS & PRODUTOS */
         .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .cat-card { 
-            background: var(--card-bg); padding: 40px; border-radius: 12px; border: 1px solid #1a1a1a;
-            cursor: pointer; transition: var(--transition); text-align: center;
-        }
+        .cat-card { background: var(--card-bg); padding: 40px; border-radius: 12px; border: 1px solid #1a1a1a; cursor: pointer; transition: var(--transition); text-align: center; }
         .cat-card:hover { border-color: #d4af37; transform: translateY(-5px); background: #111; }
         .cat-card h3 { font-size: 1.2rem; margin-bottom: 8px; font-weight: 900; }
         .cat-card span { color: #d4af37; font-size: 0.7rem; font-weight: 800; letter-spacing: 1px; }
 
-        /* GRID PRODUTOS */
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .product-card { background: #080808; border: 1px solid #1a1a1a; padding: 30px; border-radius: 15px; transition: 0.3s; }
         .product-card:hover { border-color: #d4af37; }
         
         .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
-        .price-btn { 
-            background: #111; border: 1px solid #222; color: #fff; padding: 12px; border-radius: 8px;
-            cursor: pointer; font-size: 0.8rem; transition: 0.3s; font-weight: 600;
-        }
+        .price-btn { background: #111; border: 1px solid #222; color: #fff; padding: 12px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; transition: 0.3s; font-weight: 600; }
         .price-btn:hover { background: #d4af37; color: #000; border-color: #d4af37; }
 
-        /* MODAL */
+        /* MODAIS GERAIS */
         .modal { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(5px);
         }
-        .modal-content { 
-            background: #0a0a0a; border: 1px solid #333; padding: 35px; border-radius: 20px;
-            max-width: 420px; width: 90%; text-align: center;
-        }
+        .modal-content { background: #0a0a0a; border: 1px solid #333; padding: 35px; border-radius: 20px; max-width: 420px; width: 90%; text-align: center; }
+        
         .pix-qr { width: 220px; height: 220px; margin: 20px auto; border: 3px solid #d4af37; padding: 5px; background: #fff; border-radius: 10px; }
         .pix-qr img { width: 100%; height: 100%; object-fit: contain; }
-
-        .pix-info-box {
-            background: #111; padding: 15px; border-radius: 12px; margin: 20px 0; text-align: left;
-            border: 1px solid #1a1a1a; font-size: 0.9rem;
-        }
+        .pix-info-box { background: #111; padding: 15px; border-radius: 12px; margin: 20px 0; text-align: left; border: 1px solid #1a1a1a; font-size: 0.9rem; }
         .pix-info-box b { color: #d4af37; }
 
-        /* BOTÕES GERAIS */
-        .btn-confirm {
-            background: var(--gold-texture); color: #000; width: 100%; padding: 15px; border-radius: 10px;
-            font-weight: 900; border: none; cursor: pointer; text-transform: uppercase; margin-bottom: 10px; transition: 0.3s;
-        }
+        .btn-confirm { background: var(--gold-texture); color: #000; width: 100%; padding: 15px; border-radius: 10px; font-weight: 900; border: none; cursor: pointer; text-transform: uppercase; margin-bottom: 10px; transition: 0.3s; }
         .btn-confirm:not(:disabled):hover { filter: brightness(1.1); transform: translateY(-2px); }
-        
-        .btn-close {
-            background: transparent; color: #666; width: 100%; padding: 10px; border: none;
-            cursor: pointer; font-weight: 700; text-transform: uppercase; font-size: 0.8rem;
-        }
+        .btn-close { background: transparent; color: #666; width: 100%; padding: 10px; border: none; cursor: pointer; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; }
         .btn-close:hover { color: #fff; }
+
+        /* --- ESTRELA ESCONDIDA DE AVALIAÇÃO --- */
+        .review-star {
+            position: fixed;
+            bottom: 20px;
+            right: 25px;
+            font-size: 28px;
+            color: #d4af37;
+            cursor: pointer;
+            opacity: 0.15; /* Escondido/Quase invisível */
+            z-index: 999;
+            transition: 0.4s;
+            display: none; /* Só aparece quando loga */
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        .review-star:hover {
+            opacity: 1;
+            transform: scale(1.2);
+        }
 
         footer { padding: 40px; text-align: center; color: #333; font-size: 0.8rem; }
     </style>
@@ -124,12 +119,12 @@
 <div class="page-container">
     
     <div id="loginPage" class="page active">
-        <h1 style="font-size: 3rem; margin-top: 5vh;">ACESSO A LOJA</h1>
+        <h1 style="font-size: 3rem; margin-top: 5vh;">ACESSO VIP</h1>
         <p class="subtitle">IDENTIFICAÇÃO NECESSÁRIA</p>
         
         <div class="login-box">
             <label for="discordInput">Qual seu nick no discord?</label>
-            <input type="text" id="discordInput" placeholder="Ex: soberanozzk" oninput="validaEntrada()">
+            <input type="text" id="discordInput" placeholder="Ex: geaga" oninput="validaEntrada()">
             <p class="info-text">Isso será importante para a sua entrega</p>
             <button id="btnEntrar" class="btn-confirm" disabled onclick="entrarNaLoja()">ENTRAR NA LOJA</button>
         </div>
@@ -148,22 +143,47 @@
     </div>
 </div>
 
+<div id="reviewStar" class="review-star" onclick="openReview()">★</div>
+
 <div id="payModal" class="modal">
     <div class="modal-content">
         <h2 style="color:#d4af37; font-weight: 900; letter-spacing: 1px;">FINALIZAR COMPRA</h2>
         <p id="payName" style="margin-top: 10px; color: #fff; font-weight: 600; font-size: 1rem;"></p>
         
-        <div class="pix-qr">
-            <img src="qrcode.png" alt="QR Code Pix">
-        </div>
+        <div class="pix-qr"><img src="qrcode.png" alt="QR Code Pix"></div>
 
         <div class="pix-info-box">
-            Chave: <b>15991038617</b><br>
-            Nome: <b>Mara Cristina</b>
+            Chave: <b>15991038617</b><br>Nome: <b>Mara Cristina</b>
         </div>
 
         <button class="btn-confirm" onclick="confirmAction()">CONFIRMAR PAGAMENTO</button>
         <button class="btn-close" onclick="closeModal()">FECHAR</button>
+    </div>
+</div>
+
+<div id="reviewModal" class="modal">
+    <div class="modal-content" style="padding: 20px;">
+        <h2 style="color:#d4af37; font-weight: 900; font-size: 1.5rem; margin-bottom: 20px;">AVALIE O ATENDIMENTO</h2>
+        
+        <div class="login-box" style="margin: 0; padding: 0; box-shadow: none; border: none; background: transparent;">
+            <label>Produto Adquirido</label>
+            <input type="text" id="revProduto" placeholder="Ex: Painel Rage Ios" style="margin-bottom: 15px;">
+            
+            <label>Nome do Atendente</label>
+            <input type="text" id="revAtendente" placeholder="Quem entregou seu pedido?" style="margin-bottom: 15px;">
+            
+            <label>Nota de Avaliação</label>
+            <select id="revNota" style="margin-bottom: 25px;">
+                <option value="5">⭐⭐⭐⭐⭐ Excelente</option>
+                <option value="4">⭐⭐⭐⭐ Muito Bom</option>
+                <option value="3">⭐⭐⭐ Razoável</option>
+                <option value="2">⭐⭐ Ruim</option>
+                <option value="1">⭐ Péssimo</option>
+            </select>
+            
+            <button class="btn-confirm" onclick="sendReview()">ENVIAR AVALIAÇÃO</button>
+            <button class="btn-close" onclick="closeReview()">CANCELAR</button>
+        </div>
     </div>
 </div>
 
@@ -172,73 +192,40 @@
 </footer>
 
 <script>
-    // VARIAVEL GLOBAL PARA SALVAR O NICK
     let nickDiscord = "";
 
-    // --- SISTEMA DE LOGIN ---
+    // --- SISTEMA DE LOGIN E LIBERAÇÃO DA ESTRELA ---
     function validaEntrada() {
         const input = document.getElementById('discordInput').value.trim();
-        const btn = document.getElementById('btnEntrar');
-        // Se tiver digitado algo, libera o botão. Se apagar, bloqueia de novo.
-        if (input.length > 0) {
-            btn.disabled = false;
-        } else {
-            btn.disabled = true;
-        }
+        document.getElementById('btnEntrar').disabled = input.length === 0;
     }
 
     function entrarNaLoja() {
         nickDiscord = document.getElementById('discordInput').value.trim();
         if (nickDiscord !== "") {
-            showPage('home'); // Libera a loja
+            showPage('home');
+            document.getElementById('reviewStar').style.display = 'block'; // Mostra a estrela escondida
         }
     }
 
     function goHome() {
-        // Só deixa clicar na logo e ir pra home se já tiver colocado o nick
-        if (nickDiscord !== "") {
-            showPage('home');
-        }
+        if (nickDiscord !== "") showPage('home');
     }
-    // ------------------------
 
+    // --- DADOS DA LOJA ---
     const data = {
-        "Xits Free Fire": [
-            { name: "Painel Rage Ios", plans: true },
-            { name: "Painel Full Android", plans: true },
-            { name: "Painel Emulador", plans: true }
-        ],
+        "Xits Free Fire": [ { name: "Painel Rage Ios", plans: true }, { name: "Painel Full Android", plans: true }, { name: "Painel Emulador", plans: true } ],
         "Streamings": [{ name: "Netflix Premium", price: "20,90" }],
         "Produtos Discord": [{ name: "Nitro 3 Dias", price: "10,00" }],
-        "Sensibilidade FF": [
-            { name: "Android", price: "8,90" }, { name: "Ios", price: "8,90" },
-            { name: "Mobilador", price: "8,90" }, { name: "Emulador", price: "9,90" }
-        ],
-        "Métodos": [
-            { name: "Robux", price: "3,00" }, { name: "Ifood", price: "24,90" },
-            { name: "Desempenho", price: "15,00" }, { name: "Internet Ilimitada", price: "29,90" },
-            { name: "Gift Card", price: "22,90" }, { name: "Shopee", price: "12,00" }
-        ],
-        "Bots Vip": [
-            { name: "Bot Filas", price: "12,90" }, { name: "Bot Filas V2", price: "14,90" },
-            { name: "Vendas Automáticas", price: "9,90" }, { name: "Hospedagem", price: "3,00" }
-        ],
-        "Cursos": [
-            { name: "Design", price: "9,90" }, { name: "Python", price: "12,90" },
-            { name: "Html", price: "7,90" }, { name: "Javascript", price: "12,90" }
-        ],
-        "Apks E Packs": [
-            { name: "Spotify Apk", price: "5,00" }, { name: "Pack Designer", price: "15,00" }
-        ],
-        "Bancos F4ke": [
-            { name: "Inter Fake", price: "6,90" }, { name: "Nubank Fake", price: "6,90" }
-        ]
+        "Sensibilidade FF": [ { name: "Android", price: "8,90" }, { name: "Ios", price: "8,90" }, { name: "Mobilador", price: "8,90" }, { name: "Emulador", price: "9,90" } ],
+        "Métodos": [ { name: "Robux", price: "3,00" }, { name: "Ifood", price: "24,90" }, { name: "Desempenho", price: "15,00" }, { name: "Internet Ilimitada", price: "29,90" }, { name: "Gift Card", price: "22,90" }, { name: "Shopee", price: "12,00" } ],
+        "Bots Vip": [ { name: "Bot Filas", price: "12,90" }, { name: "Bot Filas V2", price: "19,90" }, { name: "Vendas Automáticas", price: "9,90" } ],
+        "Cursos": [ { name: "Design", price: "9,90" }, { name: "Python", price: "12,90" }, { name: "Html", price: "7,90" }, { name: "Javascript", price: "12,90" } ],
+        "Apks E Packs": [ { name: "Spotify Apk", price: "5,00" }, { name: "Pack Designer", price: "15,00" } ],
+        "Bancos F4ke": [ { name: "Inter Fake", price: "6,90" }, { name: "Nubank Fake", price: "6,90" } ]
     };
 
-    const xitPlans = [
-        { l: "1 Dia", p: "9,90" }, { l: "3 Dias", p: "19,90" },
-        { l: "7 Dias", p: "29,90" }, { l: "15 Dias", p: "44,90" }, { l: "30 Dias", p: "69,90" }
-    ];
+    const xitPlans = [ { l: "1 Dia", p: "9,90" }, { l: "3 Dias", p: "19,90" }, { l: "7 Dias", p: "29,90" }, { l: "15 Dias", p: "44,90" }, { l: "30 Dias", p: "69,90" } ];
 
     function init() {
         const grid = document.getElementById('catGrid');
@@ -261,9 +248,7 @@
             let html = `<h4 style="font-size:1.3rem; margin-bottom:10px;">${p.name}</h4>`;
             if(p.plans) {
                 html += `<div class="price-grid">`;
-                xitPlans.forEach(plan => {
-                    html += `<button class="price-btn" onclick="openPay('${p.name} - ${plan.l}', '${plan.p}')">${plan.l}<br>R$ ${plan.p}</button>`;
-                });
+                xitPlans.forEach(plan => { html += `<button class="price-btn" onclick="openPay('${p.name} - ${plan.l}', '${plan.p}')">${plan.l}<br>R$ ${plan.p}</button>`; });
                 html += `</div>`;
             } else {
                 html += `<p style="color:#d4af37; font-size:1.8rem; font-weight:900; margin:20px 0;">R$ ${p.price}</p>`;
@@ -281,43 +266,81 @@
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
+    // --- FUNÇÕES DE PAGAMENTO (1ª WEBHOOK) ---
     function openPay(name, price) {
         document.getElementById('payName').innerText = `${name} - R$ ${price}`;
         document.getElementById('payModal').style.display = 'flex';
     }
-
     function closeModal() { document.getElementById('payModal').style.display = 'none'; }
     
     function confirmAction() {
-        // COLOQUE SUA WEBHOOK AQUI
-        const webhookURL = "https://discord.com/api/webhooks/1478127616690098241/TX2NGTbn6sDv6QEWEMh9s9GDWYErcK5WcJsDx3Or8QvCXLjZaoOVGQ0mjjZR8z-NwFP3";
+        // [!] INSIRA SUA WEBHOOK DE VENDAS AQUI
+        const webhookVendas = "https://discord.com/api/webhooks/1478127616690098241/TX2NGTbn6sDv6QEWEMh9s9GDWYErcK5WcJsDx3Or8QvCXLjZaoOVGQ0mjjZR8z-NwFP3"; 
+        
         const itemNome = document.getElementById('payName').innerText;
-
         const mensagem = {
             "content": "🔔 **NOVO PAGAMENTO ENVIADO!**",
             "embeds": [{
-                "title": "Verificação de Pagamento",
-                "color": 13936439,
+                "title": "Verificação de Pagamento", "color": 13936439,
                 "description": `O cliente solicitou a compra de: **${itemNome}**`,
                 "fields": [
-                    { "name": "👤 Comprador (Discord)", "value": nickDiscord, "inline": false },
-                    { "name": "Status", "value": "Aguardando comprovante/PIX", "inline": true },
-                    { "name": "Dono da Chave", "value": "Mara Cristina", "inline": true }
+                    { "name": "👤 Comprador", "value": nickDiscord, "inline": false },
+                    { "name": "Status", "value": "Aguardando comprovante/PIX", "inline": true }
                 ],
                 "timestamp": new Date()
             }]
         };
 
-        fetch(webhookURL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(mensagem)
-        })
-        .then(() => {
-            alert("Solicitação enviada! Nossa equipe chamará você no Discord.");
-            closeModal();
-        })
+        fetch(webhookVendas, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(mensagem) })
+        .then(() => { alert("Solicitação enviada! Nossa equipe chamará você no Discord."); closeModal(); })
         .catch(() => alert("Erro ao enviar. Verifique sua conexão."));
+    }
+
+    // --- FUNÇÕES DE AVALIAÇÃO (2ª WEBHOOK) ---
+    function openReview() { document.getElementById('reviewModal').style.display = 'flex'; }
+    function closeReview() { document.getElementById('reviewModal').style.display = 'none'; }
+
+    function sendReview() {
+        // [!] INSIRA SUA WEBHOOK DE AVALIAÇÕES AQUI
+        const webhookAvaliacoes = "https://discord.com/api/webhooks/1480300419518562394/63uHSLeYQWv91J2flKG5AKg1uvEaNlkua0ICge_rjdpAp6lhXCACkf6P5ZayEXX_PpU3"; 
+
+        const produtoRev = document.getElementById('revProduto').value.trim();
+        const atendenteRev = document.getElementById('revAtendente').value.trim();
+        const notaSelecionada = document.getElementById('revNota').value;
+
+        if (produtoRev === "" || atendenteRev === "") {
+            alert("Por favor, preencha o nome do produto e do atendente!");
+            return;
+        }
+
+        // Criar as estrelinhas visuais baseadas na nota
+        const estrelasVisuais = "⭐".repeat(notaSelecionada);
+
+        const msgReview = {
+            "content": "🌟 **NOVA AVALIAÇÃO DE CLIENTE!**",
+            "embeds": [{
+                "title": "Feedback Registrado",
+                "color": 16766720, // Amarelo Gold mais claro
+                "fields": [
+                    { "name": "👤 Cliente (Avaliador)", "value": nickDiscord, "inline": false },
+                    { "name": "🛠️ Atendente", "value": atendenteRev, "inline": true },
+                    { "name": "📦 Produto Adquirido", "value": produtoRev, "inline": true },
+                    { "name": "⭐ Nota", "value": `${estrelasVisuais} (${notaSelecionada}/5)`, "inline": false }
+                ],
+                "footer": { "text": "Sistema de Avaliação Soberano Store" },
+                "timestamp": new Date()
+            }]
+        };
+
+        fetch(webhookAvaliacoes, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(msgReview) })
+        .then(() => {
+            alert("Sua avaliação foi enviada com sucesso! Agradecemos o feedback.");
+            closeReview();
+            // Limpa os campos depois de enviar
+            document.getElementById('revProduto').value = "";
+            document.getElementById('revAtendente').value = "";
+        })
+        .catch(() => alert("Erro ao enviar a avaliação."));
     }
 
     init();
@@ -325,6 +348,3 @@
 
 </body>
 </html>
-
-
-
