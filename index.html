@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soberano Store! | Elite</title>
+    <title>Soberano Store | Elite</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -31,13 +31,32 @@
         }
 
         /* CONTAINER */
-        .page-container { max-width: 1200px; margin: 0 auto; padding: 50px 20px; text-align: center; }
+        .page-container { max-width: 1200px; margin: 0 auto; padding: 50px 20px; text-align: center; min-height: 80vh; }
         .page { display: none; animation: fadeIn 0.5s; }
         .page.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         h1 { font-size: 4rem; font-weight: 900; margin-bottom: 10px; color: #fff; text-transform: uppercase; }
         .subtitle { letter-spacing: 5px; color: #d4af37; font-size: 0.8rem; margin-bottom: 50px; font-weight: 700; }
+
+        /* --- TELA DE ACESSO (NOVO) --- */
+        .login-box {
+            background: var(--card-bg); border: 1px solid #1a1a1a; padding: 40px; 
+            border-radius: 15px; max-width: 400px; margin: 40px auto; text-align: left;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .login-box label { display: block; margin-bottom: 10px; font-weight: 900; color: #d4af37; text-transform: uppercase; font-size: 0.9rem;}
+        .login-box input {
+            width: 100%; padding: 15px; background: #050505; border: 1px solid #333;
+            color: #fff; border-radius: 8px; margin-bottom: 5px; outline: none; transition: 0.3s; font-size: 1rem;
+        }
+        .login-box input:focus { border-color: #d4af37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+        .info-text { font-size: 0.75rem; color: #888; margin-bottom: 25px; font-weight: 600; }
+        
+        /* Botão Desativado */
+        .btn-confirm:disabled { 
+            background: #222; color: #555; cursor: not-allowed; box-shadow: none; transform: none; border: 1px solid #333;
+        }
 
         /* GRID CATEGORIAS */
         .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
@@ -51,9 +70,7 @@
 
         /* GRID PRODUTOS */
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .product-card { 
-            background: #080808; border: 1px solid #1a1a1a; padding: 30px; border-radius: 15px; transition: 0.3s;
-        }
+        .product-card { background: #080808; border: 1px solid #1a1a1a; padding: 30px; border-radius: 15px; transition: 0.3s; }
         .product-card:hover { border-color: #d4af37; }
         
         .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
@@ -81,11 +98,13 @@
         }
         .pix-info-box b { color: #d4af37; }
 
-        /* BOTÕES MODAL */
+        /* BOTÕES GERAIS */
         .btn-confirm {
             background: var(--gold-texture); color: #000; width: 100%; padding: 15px; border-radius: 10px;
-            font-weight: 900; border: none; cursor: pointer; text-transform: uppercase; margin-bottom: 10px;
+            font-weight: 900; border: none; cursor: pointer; text-transform: uppercase; margin-bottom: 10px; transition: 0.3s;
         }
+        .btn-confirm:not(:disabled):hover { filter: brightness(1.1); transform: translateY(-2px); }
+        
         .btn-close {
             background: transparent; color: #666; width: 100%; padding: 10px; border: none;
             cursor: pointer; font-weight: 700; text-transform: uppercase; font-size: 0.8rem;
@@ -98,12 +117,25 @@
 <body>
 
 <header>
-    <div class="logo" onclick="showPage('home')">SOBERANO<span>STORE</span></div>
-    <button class="sup-btn" onclick="window.open('https://discord.gg/CXqxPeezbA')">SUPORTE DISCORD</button>
+    <div class="logo" onclick="goHome()">SOBERANO<span>STORE</span></div>
+    <button class="sup-btn" onclick="window.open('https://discord.gg/SUA_INVITE')">SUPORTE DISCORD</button>
 </header>
 
 <div class="page-container">
-    <div id="home" class="page active">
+    
+    <div id="loginPage" class="page active">
+        <h1 style="font-size: 3rem; margin-top: 5vh;">ACESSO VIP</h1>
+        <p class="subtitle">IDENTIFICAÇÃO NECESSÁRIA</p>
+        
+        <div class="login-box">
+            <label for="discordInput">Qual seu nick no discord?</label>
+            <input type="text" id="discordInput" placeholder="Ex: geaga" oninput="validaEntrada()">
+            <p class="info-text">Isso será importante para a sua entrega</p>
+            <button id="btnEntrar" class="btn-confirm" disabled onclick="entrarNaLoja()">ENTRAR NA LOJA</button>
+        </div>
+    </div>
+
+    <div id="home" class="page">
         <h1>SOBERANO STORE</h1>
         <p class="subtitle">QUALIDADE • CONFIANÇA • ELITE</p>
         <div class="category-grid" id="catGrid"></div>
@@ -140,6 +172,36 @@
 </footer>
 
 <script>
+    // VARIAVEL GLOBAL PARA SALVAR O NICK
+    let nickDiscord = "";
+
+    // --- SISTEMA DE LOGIN ---
+    function validaEntrada() {
+        const input = document.getElementById('discordInput').value.trim();
+        const btn = document.getElementById('btnEntrar');
+        // Se tiver digitado algo, libera o botão. Se apagar, bloqueia de novo.
+        if (input.length > 0) {
+            btn.disabled = false;
+        } else {
+            btn.disabled = true;
+        }
+    }
+
+    function entrarNaLoja() {
+        nickDiscord = document.getElementById('discordInput').value.trim();
+        if (nickDiscord !== "") {
+            showPage('home'); // Libera a loja
+        }
+    }
+
+    function goHome() {
+        // Só deixa clicar na logo e ir pra home se já tiver colocado o nick
+        if (nickDiscord !== "") {
+            showPage('home');
+        }
+    }
+    // ------------------------
+
     const data = {
         "Xits Free Fire": [
             { name: "Painel Rage Ios", plans: true },
@@ -228,7 +290,7 @@
     
     function confirmAction() {
         // COLOQUE SUA WEBHOOK AQUI
-        const webhookURL = "https://discord.com/api/webhooks/1478127616690098241/TX2NGTbn6sDv6QEWEMh9s9GDWYErcK5WcJsDx3Or8QvCXLjZaoOVGQ0mjjZR8z-NwFP3";
+        const webhookURL = "SUA_URL_DA_WEBHOOK_AQUI";
         const itemNome = document.getElementById('payName').innerText;
 
         const mensagem = {
@@ -238,6 +300,7 @@
                 "color": 13936439,
                 "description": `O cliente solicitou a compra de: **${itemNome}**`,
                 "fields": [
+                    { "name": "👤 Comprador (Discord)", "value": nickDiscord, "inline": false },
                     { "name": "Status", "value": "Aguardando comprovante/PIX", "inline": true },
                     { "name": "Dono da Chave", "value": "Mara Cristina", "inline": true }
                 ],
@@ -251,7 +314,7 @@
             body: JSON.stringify(mensagem)
         })
         .then(() => {
-            alert("Solicitação enviada! O suporte analisará seu pagamento.");
+            alert("Solicitação enviada! Nossa equipe chamará você no Discord.");
             closeModal();
         })
         .catch(() => alert("Erro ao enviar. Verifique sua conexão."));
